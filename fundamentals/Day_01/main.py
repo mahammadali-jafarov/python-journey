@@ -115,7 +115,7 @@ def check_leap_year():
 
 
 if __name__ == "__main__":
-    convert_currency()
+    # convert_currency()
     # show_square_and_cube()
     # check_even_or_odd()
     # calculate_circle_area()
@@ -128,4 +128,4 @@ if __name__ == "__main__":
     # reverse_four_digit_number()
     # check_triangle_inequality()
     # check_leap_year()
-    
+    pass

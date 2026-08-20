@@ -111,12 +111,16 @@ def print_star_pyramid():
 
 
 def find_perfect_numbers():
-    """Calculate proper-divisor sums for numbers from 1 through 999."""
-    divisor_sum = 1
-    for number in range(1, 1000):
+
+    """Calculate proper-divisor sums for numbers from 1 through 1000."""
+    
+    for number in range(1, 1001):
+        divisor_sum = 0
         for divisor in range(1, number):
             if number % divisor == 0:
                 divisor_sum = divisor_sum + divisor
+        if divisor_sum==number:
+            print(number)
 
 
 if __name__ == "__main__":
@@ -131,5 +135,5 @@ if __name__ == "__main__":
     # reverse_integer_with_while()
     # demonstrate_pass_and_break()
     # print_star_pyramid()
-    # find_perfect_numbers()
+    #find_perfect_numbers()
     pass
