@@ -64,7 +64,7 @@ def is_palindrome(s):
     '''
     #code
     cleaned_s=s.lower().replace(" ","")
-    return cleaned_sed==cleaned_s[::-1]
+    return cleaned_s==cleaned_s[::-1]
   
     
 
@@ -78,21 +78,24 @@ def format_list(s):
         3. Peter
     '''
     #code
-    string_list=s.title().split(",")
-    for i in string_list:
-        string_list
+    name_list=s.replace(","," ").split()
+    count=1
+    for name in name_list:
+        cleaned_list=name.title().strip()
+        print(f"{count}. {cleaned_list}")
+        count+=1
+
+        
     
-
-
-
 if __name__ == "__main__":
     #first_and_last("String Slicing")
     #print(print_quote())
     #print(format_profile("Mahammadali",20,"Baku"))
     #clean_strings("Strings Methods")
     #print(count_word("code","Writing cOdE is fun. I like to write CoDe "))
-    print(is_palindrome("Tenet"))
+    #print(is_palindrome("Tenet"))
     #format_list(" john , Mary , pEter ")
+    pass
     
 
 

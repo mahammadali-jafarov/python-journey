@@ -1,103 +1,47 @@
 import random
-#random metodu ile 1-100 arasndan random eded yaratmaq 
-number=random.randint(1,100)
 
-'''  Number Guessing Game  '''
+print("Number Guessing Game")
+print("1 və 100 intervalında ədəd təxmin edin. 7 haqqınız var.")
 
-print("               Wolcame to My number guessing game!               ")
+play = input("Oynamaq istəyirsiniz? (yes/no): ").strip().lower()
 
-print("  RULES(I know nobody don't love rules)  ")
+if play == 'yes':
+    number = random.randint(1, 100)
+    max_guesses = 7
+    guesses_taken = 0
+    previous_distance = None
 
-print(" 1 ve 100 intervalinda eded texmin ede bilersen. ")
-print(" 7 texmin haqqin var ")
-
-# play=input("DO YOU WANT TO PLAY MY GAME ?(PLEASE PLAY),YES or NO: ").lower() -> bu hisseni umumi dovru if-else blokuna elave etdikde xeta verdi 
-
-    
-while True:
-    guess=int(input("texminin nedir? : "))
-    guesses=1
-    if guess!=number:
-        print("Yanlis, 6 haqqiniz qaldi")
-        if guess>number:
-            print("daha kicik eded texmin edin ")
-        else:
-            print("daha boyuk eded texmin edin")
-        guess=int(input("texmininiz nedir? : "))
-        guesses+=1
-        if guess!=number:
-            print("Yanlis, 5 haqqiniz qaldi")
-            
-            if guess>number:
-                print("daha kicik eded texmin edin ")
-            else:
-                print("daha boyuk eded texmin edin")
-            guess=int(input("texmininiz nedir? : "))
-            guesses+=1
-            if guess!=number:
-                print("Yanlis, 4 haqqiniz qaldi")
-                
-                if guess>number:
-                    print("daha kicik eded texmin edin ")
-                else:
-                    print("daha boyuk eded texmin edin")
-                guess=int(input("texmininiz nedir? : "))
-                guesses+=1
-                if guess!=number:
-                    print("Yanlis, 3 haqqiniz qaldi")
-                    
-                    if guess>number:
-                        print("daha kicik eded texmin edin ")
-                    else:
-                        print("daha boyuk eded texmin edin")
-                    guess=int(input("texmininiz nedir? : "))
-                    guesses+=1
-                    if guess!=number:
-                        print("Yanlis, 2 haqqiniz qaldi")
-                        
-                        if guess>number:
-                            print("daha kicik eded texmin edin ")
-                        else:
-                            print("daha boyuk eded texmin edin")
-                        guess=int(input("texmininiz nedir? : "))
-                        guesses+=1
-                        if guess!=number:
-                            print("Yanlis, 1 haqqiniz qaldi")
-                            
-                            if guess>number:
-                                print("daha kicik eded texmin edin ")
-                            else:
-                                print("daha boyuk eded texmin edin")
-                            guess=int(input("texmininiz nedir? : "))
-                            guesses+=1
-                            if guess!=number:
-                                print("Yanlis, 0 haqqiniz qaldi")
-                                
-                                if guess>number:
-                                    print("daha kicik eded texmin edin ")
-                                else:
-                                    print("daha boyuk eded texmin edin")
-                                guess=int(input("texmininiz nedir? : "))
-                                if guesses>7:
-                                    print(f"Haqqiniz bitdi, Uduzdunuz. Eded: {number}")
-                            else:
-                                print(f"Tebrikler . Eded: {number} , Texmin sayi: {guesses}")
-                                break                  
-                        else:
-                            print(f"Tebrikler. Eded: {number} , Texmin sayi: {guesses}")
-                            break
-                    else:
-                        print(f"Tebrikler . Eded:{number} , Texmin sayi: {guesses}")
-                        break
-                else:
-                    print(f"Tebrikler. Eded: {number} , Texmin sayi: {guesses}")
-                    break
-            else:
-                print(f"Tebrikler ,Eded: {number} , Texmin sayi: {guesses}")
-                break
-        else:
-            print(f"Tebrikler ,Eded: {number} , Texmin sayi: {guesses}")
+    while guesses_taken < max_guesses:
+        guess = int(input(f"Təxmininiz nədir? ({max_guesses - guesses_taken} haqqınız qaldı): "))
+        guesses_taken += 1
+        
+        if guess == number:
+            print(f"Təbriklər! Ədədi {guesses_taken} cəhddə tapdınız.")
             break
+            
+        # İsti-Soyuq məntiqi
+        current_distance = abs(number - guess)
+        
+        if previous_distance is not None:
+            if current_distance < previous_distance:
+                print("İstiləşdi (Daha yaxınsınız).")
+            elif current_distance > previous_distance:
+                print("Soyudu (Daha uzaqlaşdınız).")
+            else:
+                print("Eyni məsafə.")
+        else:
+            print("Yanlışdır.")
+            
+        previous_distance = current_distance
+        
+        # Əlavə ipucu
+        if guess > number:
+            print("Daha kiçik ədəd təxmin edin.")
+        else:
+            print("Daha böyük ədəd təxmin edin.")
+            
     else:
-        print(f"Tebrikler ,Eded: {number} , Texmin sayi: {guesses}")
-        break
+        # Bu 'else' while dövrünə aiddir. Yalnız break işləmədikdə (haqq bitdikdə) icra olunur.
+        print(f"Haqqınız bitdi. Uduzdunuz. Gizli ədəd: {number}")
+else:
+    print("Oyun bitdi.")
