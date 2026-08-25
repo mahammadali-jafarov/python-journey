@@ -116,7 +116,7 @@ def check_leap_year():
 
 if __name__ == "__main__":
     '''
-    here you can run what is returned by calling each function separately (uncomment).\
+    here you can run what is returned by calling each function separately (uncomment).
     
     '''
     # convert_currency()

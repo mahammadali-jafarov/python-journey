@@ -60,7 +60,7 @@ def is_anagram(s1,s2):
         
 if __name__ == "__main__":
     '''
-    here you can run what is returned by calling each function separately (uncomment).
+    here you can run what is returned by calling each function separately (uncomment)
     '''
     #print(rotate_left("Python",2))
     #print(replace_vowels("Coding is fun"))

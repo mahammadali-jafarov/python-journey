@@ -17,5 +17,4 @@ def eucliean_algorithm():
 
 
 if __name__ == "main":
-    
     eucliean_algorithm()

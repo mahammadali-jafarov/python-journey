@@ -126,7 +126,7 @@ def find_perfect_numbers():
 if __name__ == "__main__":
 
     '''
-    here you can run what is returned by calling each function separately (uncomment).
+    here you can run what is returned by calling each function separately (uncomment)
     '''
     # sum_numbers_to_n()
     # print_multiplication_table()
