@@ -115,6 +115,10 @@ def check_leap_year():
 
 
 if __name__ == "__main__":
+    '''
+    here you can run what is returned by calling each function separately (uncomment).\
+    
+    '''
     # convert_currency()
     # show_square_and_cube()
     # check_even_or_odd()

@@ -193,6 +193,9 @@ def simulate_atm():
 
 
 if __name__ == "__main__":
+    '''
+    here you can see what is returned by calling each function separately (uncomment).
+    '''
     # classify_even_or_odd()
     # classify_number_sign()
     # classify_letter()

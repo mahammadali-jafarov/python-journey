@@ -88,6 +88,10 @@ def format_list(s):
         
     
 if __name__ == "__main__":
+
+    '''
+    here you can run what is returned by calling each function separately (uncomment).
+    '''
     #first_and_last("String Slicing")
     #print(print_quote())
     #print(format_profile("Mahammadali",20,"Baku"))
