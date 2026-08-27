@@ -57,20 +57,58 @@ def merge_inventories(inv1,inv2):
         merge_inv[key]=merge_inv.get(key,0) + value
     return merge_inv
 
+def get_nested_value(data_dict,keys_list):
+
+    '''
+    Nested Lookup: Write a function get_nested_value(data_dict, keys_list). 
+    You are given a deeply nested dictionary and a list of keys representing a path (e.g., ["user", "profile", "name"]). 
+    Traverse down the dictionary. If any key along the path is missing, safely return None.
+    '''
+    #CODE
+    current=data_dict
+
+    for key in keys_list:
+        if isinstance(current,dict) and key in current:
+            current=current[key]
+        else:
+            return None #Path broken 
+    return current
+     
 
 if __name__ =="__main__":
 
     #Exercise 1
-    print(character_count("ababaacc"))  #Expected: {'a':4, 'b':2, 'c':2}
+    print(character_count("ababaacc"))  
+    #Expected: {'a':4, 'b':2, 'c':2}
 
     #Exercise 2
-    print(generate_squares(3))    #Expected: {1: 1, 2: 4, 3:9}
+    print(generate_squares(3))    
+    #Expected: {1: 1, 2: 4, 3:9}
 
     #Exercise 3
-    print(invert_dict({'a':1}))  #Expected: {1:'a'}
+    print(invert_dict({'a':1}))  
+    #Expected: {1:'a'}
 
     #Exercise 4
-    print(filter_passing_grades({'Michael': 85, 'Juliette': 65, 'Hannah': 75})) # Expected: {'Michael': 85, 'Hannah': 75}
+    print(filter_passing_grades({'Michael': 85, 'Juliette': 65, 'Hannah': 75})) 
+    # Expected: {'Michael': 85, 'Hannah': 75}
 
     #Exercise 5
-    print(merge_inventories({"apples": 5, "bananas": 2}, {"apples": 3, "oranges": 4})) # Expected: {'apples': 8, 'bananas': 2, 'oranges': 4}
+    print(merge_inventories({"apples": 5, "bananas": 2}, {"apples": 3, "oranges": 4})) 
+    # Expected: {'apples': 8, 'bananas': 2, 'oranges': 4}
+
+    #Exercise 6 
+    nested_data = {
+        "user": {
+            "profile": {
+                "name": "Alice",
+                "age": 30
+            }
+        }
+    }
+
+    # Valid path -> Expected: "Alice"
+    print(get_nested_value(nested_data, ["user", "profile", "name"]))
+
+    # Broken path -> Expected: None
+    print(get_nested_value(nested_data, ["user", "settings", "theme"]))
