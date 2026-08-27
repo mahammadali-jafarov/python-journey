@@ -86,12 +86,9 @@ def filter_positive_evens(lst):
     return [number for number in lst if number>0 and number%2==0] 
 
 
-
-
-
 if __name__ =="__main__":
 
     #print(swap_extremes([1,2,3]))
     #print(manage_inventory([],""))
-    print(filter_positive_evens([-1,-2,2,3,4,5,-6,7,8,-10]))
-    #pass
+    #print(filter_positive_evens([-1,-2,2,3,4,5,-6,7,8,-10]))
+    pass
