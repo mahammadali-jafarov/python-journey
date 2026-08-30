@@ -1,3 +1,5 @@
+import string
+
 def count_unique_chars(string):
 
     '''
@@ -17,9 +19,7 @@ def is_allowed(allowed_ips,target_ip):
     '''
     #CODE
     set_of_ip=set(allowed_ips)
-    return target_ip in list(set_of_ip)
-
-        
+    return target_ip in set_of_ip
 
 def find_common_elements(list1,list2,list3):
 
@@ -29,9 +29,10 @@ def find_common_elements(list1,list2,list3):
     that appear in all three lists.
     '''
     #CODE
+    common_set=set(list1) & set(list2) & set(list3)
+    return list(common_set)
     
-    
-def exclusive_strudents(class_a,class_b):
+def exclusive_students(class_a,class_b):
     
     '''
     Symmetric Difference: Write a function exclusive_students(class_a, class_b). 
@@ -39,6 +40,7 @@ def exclusive_strudents(class_a,class_b):
     who are taking Class A OR Class B, but not both.
     '''
     #CODE
+    return set(class_a) ^ set(class_b)
 
 def is_pangram(sentence):
 
@@ -48,30 +50,42 @@ def is_pangram(sentence):
     (like "The quick brown fox jumps over the lazy dog"). Use sets to verify this efficiently. Return True or False
     '''
     #CODE
+    sentence_set=set(sentence.lower())
+    alphabet_set=set(string.ascii_lowercase)
 
-def find_pair_values(lst,target):
-
-    '''
-    Fast Two-Sum (O(n) time): Write a function find_pair_values(lst, target). 
-    Instead of finding indices, find the actual two numbers that add up to the target. 
-    Constraint: You must use a single for loop and a set to track numbers you've already seen. 
-    Return the pair as a tuple, or None if no pair exists.
-    '''
-    #CODE
-
-def longest_consecutive(nums):
-
-    '''
-    Longest Consecutive Sequence: Write a function longest_consecutive(nums). 
-    Given an unsorted list of integers, find the length of the longest consecutive elements sequence.
-    Example: [100, 4, 200, 1, 3, 2] -> The longest consecutive sequence is [1, 2, 3, 4], so return 4.
-    Algorithmic trick: Convert the list to a set. Then, only start counting a sequence 
-    if the number is the start of a sequence (i.e., num - 1 is not in the set).
-    This allows you to solve a complex sorting problem in O(n) time!
-    '''
-    #CODE
+    # Does the sentence set contain all the letters of the alphabet set?
+    return sentence_set.issuperset(alphabet_set)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
 
-    print(count_unique_chars("Hello World"))
+    # Exercise 8: count_unique_chars
+    print("--- Exercise 8: The Deduplicator ---")
+    print(count_unique_chars("Hello World"))  
+    # Expected: 7 (unique characters: 'h', 'e', 'l', 'o', 'w', 'r', 'd')
+
+    # Exercise 9: is_allowed
+    print("\n--- Exercise 9: Fast Membership ---")
+    allowed = ["192.168.1.1", "10.0.0.1", "172.16.0.1"]
+    print(is_allowed(allowed, "10.0.0.1"))    # Expected: True
+    print(is_allowed(allowed, "192.168.1.50")) # Expected: False
+
+    # Exercise 10: find_common_elements
+    print("\n--- Exercise 10: Three-Way Intersection ---")
+    l1 = [1, 2, 3, 4, 5]
+    l2 = [3, 4, 5, 6, 7]
+    l3 = [5, 4, 9, 10, 3]
+    print(find_common_elements(l1, l2, l3))  
+    # Expected: [3, 4, 5] (or {3, 4, 5})
+
+    # Exercise 11: exclusive_students
+    print("\n--- Exercise 11: Symmetric Difference ---")
+    class_a = ["Alice", "Bob", "Charlie"]
+    class_b = ["Bob", "David", "Charlie"]
+    print(exclusive_students(class_a, class_b))  
+    # Expected: {'Alice', 'David'}
+
+    # Exercise 12: is_pangram
+    print("\n--- Exercise 12: The Pangram Checker ---")
+    print(is_pangram("The quick brown fox jumps over the lazy dog")) # Expected: True
+    print(is_pangram("Hello World"))                                # Expected: False
